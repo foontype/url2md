@@ -1,6 +1,9 @@
 
 URLリストの先を全部ダウンロードして .md を作成するツール。
 
+requirements: docker, curl
+cygwin supported.
+
 ```
 $ git clone https://github.com/foontype/url2md
 $ cd url2md
