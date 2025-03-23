@@ -1,5 +1,6 @@
+# url2md
 
-URLリストの先を全部ダウンロードして .md を作成するツール。
+pandoc/URLリストの先を全部ダウンロードして、docker run pandoc/extra で .md を作成するツール。
 
 requirements: docker, curl
 
