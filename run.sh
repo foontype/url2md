@@ -84,10 +84,26 @@ download_and_convert() {
   fi
 
   # 日本語変換
-  docker run --rm -v "$(cwd):/data" url2aidoc_nkf -w --overwrite "/data/$temp_file"
+  docker run --rm \
+	  -e HTTP_PROXY \
+	  -e http_proxy \
+	  -e HTTPS_PROXY \
+	  -e https_proxy \
+	  -e NO_PROXY \
+	  -e no_proxy \
+	  -v "$(cwd):/data" \
+	  url2aidoc_nkf -w --overwrite "/data/$temp_file"
 
   # Pandocを使用して変換
-  docker run --rm -v "$(cwd):/data" pandoc/extra -f html -t markdown "/data/$temp_file" -o "$output_file"
+  docker run --rm \
+	  -e HTTP_PROXY \
+	  -e http_proxy \
+	  -e HTTPS_PROXY \
+	  -e https_proxy \
+	  -e NO_PROXY \
+	  -e no_proxy \
+	  -v "$(cwd):/data" \
+	  pandoc/extra -f html -t markdown "/data/$temp_file" -o "$output_file"
 
   if [[ $? -eq 0 ]]; then
     echo "変換成功: $output_file"
